@@ -1,0 +1,41 @@
+specVersion: 0.0.1
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: GMNFT
+    network: matic
+    source:
+      address: "0xe86515c8a14ef0ccf772bbf43b77db78fc608b2d"
+      abi: GMNFT
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - Approval
+        - ApprovalForAll
+        - ClaimNFT
+        - OwnershipTransferred
+        - Transfer
+        - WhitelistAdded
+        - WhitelistRemoved
+      abis:
+        - name: GMNFT
+          file: ./abis/GMNFT.json
+      eventHandlers:
+        - event: Approval(indexed address,indexed address,indexed uint256)
+          handler: handleApproval
+        - event: ApprovalForAll(indexed address,indexed address,bool)
+          handler: handleApprovalForAll
+        - event: ClaimNFT(address,uint256,address)
+          handler: handleClaimNFT
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: Transfer(indexed address,indexed address,indexed uint256)
+          handler: handleTransfer
+        - event: WhitelistAdded(indexed address)
+          handler: handleWhitelistAdded
+        - event: WhitelistRemoved(indexed address)
+          handler: handleWhitelistRemoved
+      file: ./src/mapping.ts
