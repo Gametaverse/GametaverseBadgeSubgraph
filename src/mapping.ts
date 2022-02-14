@@ -17,9 +17,11 @@ export function handleApprovalForAll(event: ApprovalForAll): void {}
 
 export function handleClaimNFT(event: ClaimNFT): void {
   let entity = new ReferStatusEntity(event.transaction.hash.toHex())
-  entity.user = event.params._user
-  entity.referer = event.params._referrer
-  entity.save()
+  if(event.params._referrer.toHex() != "0x0000000000000000000000000000000000000000") {
+    entity.user = event.params._user
+    entity.referer = event.params._referrer
+    entity.save()
+  }
 }
 
 export function handleOwnershipTransferred(event: OwnershipTransferred): void {}
