@@ -1,6 +1,5 @@
-type ExampleEntity @entity {
+type ReferStatusEntity @entity {
   id: ID!
-  count: BigInt!
-  owner: Bytes! # address
-  approved: Bytes! # address
+  user: Bytes! # address
+  referer: Bytes! # address
 }
