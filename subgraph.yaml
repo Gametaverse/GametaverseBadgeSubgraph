@@ -8,6 +8,7 @@ dataSources:
     source:
       address: "0xe86515c8a14ef0ccf772bbf43b77db78fc608b2d"
       abi: GMNFT
+      startBlock: 24691727 
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.5
