@@ -1,5 +1,6 @@
 type ReferStatusEntity @entity {
   id: ID!
+  block_number: BigInt!
   user: Bytes! # address
   referer: Bytes! # address
 }
